@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
-import { container, header, navContainer, navItem } from "./layout.module.css"
+import { container, header, navContainer } from "./layout.module.sass";
+import Seo from "../../configs/seo";
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
@@ -13,9 +14,9 @@ const Layout = ({ pageTitle, children }) => {
       }
     }
   `)
-    console.log("data", data);
   return (
     <main className={container}>
+      <Seo title={pageTitle}/>
       <title>{pageTitle}</title>
       <p>{data.site.siteMetadata.title}</p>
       <nav>
